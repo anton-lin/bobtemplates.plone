@@ -26,6 +26,11 @@ def check_dexterity_type_name(configurator, question, answer):
     return answer
 
 
+def check_global_allow(configurator, answer):
+    if configurator.variables['dexterity_type_global_allow']:
+        raise SkipQuestion(u'global_allow is false, so we skip container name question.')
+
+
 def _update_metadata_xml(configurator):
     """Add plone.app.dexterity dependency metadata.xml in Generic Setup
     profiles."""
