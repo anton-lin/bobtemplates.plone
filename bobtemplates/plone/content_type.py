@@ -28,7 +28,7 @@ def check_dexterity_type_name(configurator, question, answer):
 
 def check_global_allow(configurator, answer):
     if configurator.variables['dexterity_type_global_allow']:
-        raise SkipQuestion(u'global_allow is false, so we skip container name question.')
+        raise SkipQuestion(u'global_allow is true, so we skip parent container name question.')  # NOQA: E501
 
 
 def _update_metadata_xml(configurator):
