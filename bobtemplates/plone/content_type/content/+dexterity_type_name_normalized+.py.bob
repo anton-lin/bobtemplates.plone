@@ -76,17 +76,5 @@ class I{{{ dexterity_type_name_klass }}}(model.Schema):
 class {{{ dexterity_type_name_klass }}}({{{ dexterity_type_base_class }}}):
     """
     """
-{{% if not dexterity_type_global_allow %}}
 
-    def set_up(self):
-        portal_types = self.portal.portal_types
-        parent_id = portal_types.constructContent(
-            '{{{ dexterity_parent_container_type_name }}}',
-            self.portal,
-            'parent_id',
-            title='Parent container',
-        )
-        self.parent = self.portal[parent_id]
-
-{{% endif %}}
 {{% endif %}}

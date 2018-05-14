@@ -142,6 +142,32 @@ dexterity_type_supermodel=False
     )
     assert result == 0
 
+    # generate subtemplate content_type with parent container:
+    template = """[variables]
+dexterity_type_name=Tasks Container
+dexterity_type_base_class=Container
+dexterity_type_create_class=True
+dexterity_type_global_allow=False
+dexterity_parent_container_type_name=my_parent_container
+dexterity_type_filter_content_types=True
+subtemplate_warning=False
+dexterity_type_desc=A tasks container for Plone
+dexterity_type_supermodel=True
+"""
+    generate_answers_ini(wd, template)
+
+    config.template = 'content_type'
+    result = subprocess.call(
+        [
+            'mrbob',
+            'bobtemplates.plone:' + config.template,
+            '--config', 'answers.ini',
+            '--non-interactive',
+        ],
+        cwd=wd,
+    )
+    assert result == 0
+
     assert file_exists(wd, '/src/collective/task/configure.zcml')
 
     with capsys.disabled() if config.verbose else dummy_contextmanager():
