@@ -45,7 +45,6 @@ class {{{ dexterity_type_name_klass }}}IntegrationTest(unittest.TestCase):
             title='Parent container',
         )
         self.parent = self.portal[parent_id]
-
 {{% endif %}}
 
     def test_ct_{{{ dexterity_type_name_normalized }}}_schema(self):

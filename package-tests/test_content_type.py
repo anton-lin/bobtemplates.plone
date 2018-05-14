@@ -2,6 +2,7 @@
 
 from bobtemplates.plone import base
 from bobtemplates.plone import content_type
+from mrbob.bobexceptions import SkipQuestion
 from mrbob.bobexceptions import ValidationError
 from mrbob.configurator import Configurator
 
@@ -44,6 +45,21 @@ def test_prepare_renderer():
         },
     )
     content_type.prepare_renderer(configurator)
+
+
+def test_check_global_allow():
+    configurator = Configurator(
+        template='bobtemplates.plone:content_type',
+        target_directory='collective.foo.bar',
+        bobconfig={
+            'non_interactive': True,
+        },
+        variables={
+            'dexterity_type_global_allow': 'y',
+        },
+    )
+    with pytest.raises(SkipQuestion):
+        content_type.check_global_allow(configurator, None)
 
 
 def test_post_renderer(tmpdir):
