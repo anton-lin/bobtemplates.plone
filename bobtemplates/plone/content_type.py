@@ -96,7 +96,7 @@ def _update_types_xml(configurator):
         tree = etree.parse(xml_file, parser)
         types = tree.xpath("/object[@name='portal_types']")[0]
         type_name = configurator.variables['dexterity_type_name']
-        parent_container_name = configurator.variables['dexterity_parent_container_type_name']
+        parent_container_name = configurator.variables['dexterity_parent_container_type_name']    # NOQA: E501
         if len(types.xpath("./object[@name='{name}']".format(name=type_name))):
             print('{name} already in types.xml, skip adding!'.format(name=type_name))  # NOQA: E501
             return
