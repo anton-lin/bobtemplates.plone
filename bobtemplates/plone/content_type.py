@@ -96,11 +96,13 @@ def _update_types_xml(configurator):
         tree = etree.parse(xml_file, parser)
         types = tree.xpath("/object[@name='portal_types']")[0]
         type_name = configurator.variables['dexterity_type_name']
+        parent_container_name = configurator.variables['dexterity_parent_container_type_name']
         if len(types.xpath("./object[@name='{name}']".format(name=type_name))):
             print('{name} already in types.xml, skip adding!'.format(name=type_name))  # NOQA: E501
             return
         types.append(
             etree.Element('object', name=type_name, meta_type='Dexterity FTI'),
+            etree.Element('object', name=parent_container_name, meta_type='Dexterity FTI'),  # NOQA: E501
         )
 
     with open(types_file_path, 'wb') as xml_file:

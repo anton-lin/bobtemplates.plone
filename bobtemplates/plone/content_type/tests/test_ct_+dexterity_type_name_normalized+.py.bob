@@ -94,6 +94,13 @@ class {{{ dexterity_type_name_klass }}}IntegrationTest(unittest.TestCase):
             type='{{{ dexterity_type_name }}}',
             id='{{{ dexterity_type_name_normalized }}}',
         )
+{{% if not dexterity_type_global_allow %}}
+        obj = api.content.create(
+            container=self.parent,
+            type='{{{ dexterity_parent_container_type_name }}}',
+            id='{{{ dexterity_type_name_normalized }}}',
+        )
+
 {{% if dexterity_type_create_class %}}
         self.assertTrue(
             I{{{ dexterity_type_name_klass }}}.providedBy(obj),

@@ -144,7 +144,7 @@ dexterity_type_supermodel=False
 
     # generate subtemplate content_type with parent container:
     template = """[variables]
-dexterity_type_name=Tasks Container with parent container
+dexterity_type_name=Tasks Container
 dexterity_type_base_class=Container
 dexterity_type_create_class=True
 dexterity_type_global_allow=False
