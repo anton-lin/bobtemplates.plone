@@ -117,13 +117,13 @@ Testing
 
 All templates and sub-templates should have tests for the structure they provide.
 
-These tests will give the developers a good starting point. So that they only need to write test for there own code.
-Also these tests will be called by Tox and on Travis to make sure all by bobtemplates.plone created structures are working and tested.
+These tests will give the developers a good starting point. So that they only need to write test for their own code.
+Also these tests will be called by Tox-Travis to make sure that all the structures created by bobtemplates.plone should be working and tested.
 
-To run these test we run all templates in every combination and run the tests inside the created packages.
+To run these tests we run all the templates with every combination and run the tests inside the created packages.
 
 This could be for example the ``addon`` alone. Or for a package with Dexterity content types,
-first the ``addon`` template and then inside the created package the ``content_type`` sub-template.
+first the ``addon`` template and then the inside created package the ``content_type`` sub-template.
 
 The tests are running after all templates for a case are applied.
 
@@ -192,4 +192,3 @@ By the time or writing this, we have the following test cases (combinations), wh
 The test are defined in the directory ``skeleton-tests`` and are called by ``tox`` as defined in tox.ini.
 
 If you add new test cases (files), make sure that they are in the tox.ini and also called by travis!
-
